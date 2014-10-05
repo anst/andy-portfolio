@@ -17,7 +17,8 @@ body {
       font-size: 50px;
       line-height: 57px;
       font-weight: 400;
-      background: url("/theme/img/logo.png") no-repeat;
+      background: url("/theme/img/logo.svg") no-repeat;
+      background-size: 78px 68px;
       padding-left: 100px;
       color: #f8f9fa;
       letter-spacing: 1.5px; }
