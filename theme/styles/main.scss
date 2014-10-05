@@ -132,6 +132,9 @@ body {
 				a:hover {
 					color: $blue_darker;
 				}
+				.post {
+					border: none;
+				}
 			}
 			.social {
 				text-align: center;
@@ -151,6 +154,11 @@ body {
 							text-decoration: none;
 						}
 					}
+				}
+			}
+			.title {
+				h1 {
+	
 				}
 			}
 		}

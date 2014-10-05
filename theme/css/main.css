@@ -98,6 +98,8 @@ body {
           transition: all .5s ease-in-out; }
         .container .content .bottom .posts a:hover {
           color: #009fdb; }
+        .container .content .bottom .posts .post {
+          border: none; }
       .container .content .bottom .social {
         text-align: center;
         width: 49.4%;
