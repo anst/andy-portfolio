@@ -22,7 +22,7 @@ $streak->route('/', function($streak) {
 		if(substr($temp[0],0, 1)==='!') {
 			continue;
 		}
-		
+
 
 		$post_content = substr(rtrim(strip_tags(Markdown(implode("\n", array_slice(explode("\n", file_get_contents($post)), 1))))),0,$streak_config['streak_post_preview_length']-3);
 		array_push($posts_detail, array(
@@ -63,7 +63,7 @@ $streak->route('/work', function($streak) {
 		if(substr($temp[0],0, 1)==='!') {
 			continue;
 		}
-		
+
 
 		$post_content = substr(rtrim(strip_tags(Markdown(implode("\n", array_slice(explode("\n", file_get_contents($post)), 1))))),0,$streak_config['streak_post_preview_length']-3);
 		array_push($posts_detail, array(
@@ -76,6 +76,47 @@ $streak->route('/work', function($streak) {
 		$ie++;
 	}
 	return $streak->render('work.html', array(
+		"streak_blog_author" => $streak_config["streak_blog_author"],
+		"streak_blog_name" => $streak_config["streak_blog_name"],
+		"streak_blog_description" => $streak_config["streak_blog_description"],
+		"streak_url" => $streak_config["streak_url"],
+		"streak_url_prefix" => $streak_config["streak_url_prefix"],
+		"streak_disqus_id" => $streak_config["streak_disqus_id"],
+		"posts" => $posts_detail,
+	));
+});
+$streak->route('/about', function($streak) {
+	require dirname(__FILE__).'/system/markdown.php';
+	require dirname(__FILE__).'/system/config.php';
+	$posts = glob($streak_config["streak_post_directory"].'*.'.$streak_config["streak_post_extension"]);
+	usort($posts, create_function('$a,$b', 'return -(filectime($a) - filectime($b));'));
+	$posts_detail = array();
+	$ie = 1;
+	foreach($posts as $post) {
+		if($ie>3) {
+			break;
+		}
+		$date = substr(basename($post, '.'.$streak_config['streak_post_extension']), 0,10);
+		$slug = substr(basename($post, '.'.$streak_config['streak_post_extension']), 11);
+
+		$temp = explode("\n", file_get_contents($post));
+		$title = substr($temp[0],0, 1)==='!'?substr($temp[0],2):substr($temp[0],1);
+		if(substr($temp[0],0, 1)==='!') {
+			continue;
+		}
+
+
+		$post_content = substr(rtrim(strip_tags(Markdown(implode("\n", array_slice(explode("\n", file_get_contents($post)), 1))))),0,$streak_config['streak_post_preview_length']-3);
+		array_push($posts_detail, array(
+			"date" => $date,
+			"slug" => $slug,
+			"title" => $title,
+			"post_content" => $post_content,
+			"link" => $streak_config["streak_url"].$streak_config["streak_url_prefix"].str_replace("-","/",$date).'/'.$slug,
+		));
+		$ie++;
+	}
+	return $streak->render('about.html', array(
 		"streak_blog_author" => $streak_config["streak_blog_author"],
 		"streak_blog_name" => $streak_config["streak_blog_name"],
 		"streak_blog_description" => $streak_config["streak_blog_description"],

@@ -30,35 +30,24 @@
 
             <div class="content animated fadeInUp">
                 <div class="title">
-                    <div class="heading">
+                    <div class="heading" >
+                        <h1 class="page-title" style="line-height:0px">About Me</h1>
                     </div>
-                        <?php
+                    <div class="about">
+                        <div class="me"></div>
+                        <div class="about-blurb">
+                            <h3 style="line-height:0">Hey, I'm Andy Sturzu.</h3>
+                            <p>I'm currently a senior in high school and am extremely passionate about programming and great design. I love to pursue perfection to the best of my ability. I enjoy programming in <b>Javascript</b> and occasionally <b>Python</b> and <b>Java</b> . I stress <i>(sometimes too much)</i> over <b>pixels</b>. But what I love most about what I do is the most is the crossroad between development and design. I feel that it's nearly impossible to have a great product without both. That is why I try not to focus on one side of the spectrum, but both.</p>
 
-                            echo "<div class='post'>";
-                            echo '<h1 class=\'title\' style=\'line-height: 10px;margin-top: -10px;margin-bottom: -10px;\'><span style="font-size:16px;color:rgba(0,0,0,0.5);margin-right:8px;border-right: 2px dotted rgba(0,0,0,0.3); border-padding: 8px;">';
-                            echo $date.' </span>'.$title;
-                            echo "</h1><br>";
-                            echo "</div><div class=\"header-divider divider\"></div>";
-                            echo '<div class="post_content">';
-                            echo $post_content;
-                            echo "</div>";
-                        ?>
-                    <div class="divider"></div>
+                            <p>In my spare time I enjoy going to hackathons, participating in CTFs, playing tennis, listening to music, and watching TV.</p>
 
-                    <?php
-                        if(strlen($streak_disqus_id)!=0) { ?>
-                            <div style="width:100%;text-align:center"><span class="show_comments" style="cursor:pointer"><i class="fa fa-comment" style="text-decoration:none;cursor:pointer">&nbsp;</i>Show Comments</span></div>
-                            <div id="disqus_thread" style="display:none;"></div>
-                            <script type="text/javascript">
-                                <?php echo "var disqus_shortname = '".$streak_disqus_id."';"; ?>
-                                (function() {
-                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                })();
-                            </script>
-                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    <?php } ?>
+                            <p>Can't get enough? Check out my <a href="https://dl.dropboxusercontent.com/content_link/Ok3w5TJ7KntO0gABCSZQLMccT75OxwoOd2aIiatNT4B3bnpUwQd5Q7F1Z0WcOULf">résumé</a>.</p>
+
+
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <?php require_once('footer.html'); ?>
